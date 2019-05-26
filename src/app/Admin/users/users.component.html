@@ -1,0 +1,47 @@
+<table class="table table-striped">
+    <thead>
+    <th scope="col">Name</th>
+    <th scope="col">LastName</th>
+    <th scope="col">UserName</th>
+    <th scope="col">Email</th>
+    <th scope="col">Number</th>
+    <th scope="col">Birthday </th>
+    <th scope="col">Role</th>
+    <th scope="col">Image</th>
+    
+    <th scope="col"> Suppression</th>
+    </thead>
+    
+<tbody *ngFor="let user of users | async" >
+ <!-- <app-user-details [user]='user'></app-user-details> -->
+ <tr>
+ <td>
+    {{user.name}}
+  </td>
+  <td>
+    {{user.lastname}}
+  </td>
+  <td>
+    {{user.username}}
+  </td>
+  <td>
+    {{user.email}}
+    </td>
+    <td>
+    {{user.number}}
+    </td>
+    <td>
+    {{user.birthDay}}
+    </td>
+    <td>
+    {{user.roles[0].name}}
+    </td>
+    <td>
+      {{user.image}}
+    </td>
+      <td>
+          <button type="button" class="button btn-danger" (click)='suppressionUsers(user.id)'>Suppression</button>
+      </td>
+    </tr>
+</tbody>
+</table>

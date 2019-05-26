@@ -1,0 +1,127 @@
+
+<section class="section section-lg pt-lg-0">
+    <div class="float-right">
+        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal1" >Ajout</button>
+        </div>
+   <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="row row-grid">
+          <div class="col-lg-4 events-block" *ngFor="let event of events | async">
+            <div class="card card-lift--hover shadow border-0">
+                <div class="banner-event">
+                    <img src="http://localhost:4200/assets/img/theme/4.jpg" class="img-events">
+                </div>
+              <div class="card-body py-5">
+                <h6 class="text-primary text-uppercase">{{event.labelle}}</h6>
+                <p class="description mt-3">{{event.description}}</p>
+                <div>
+                  <span class="badge badge-pill badge-primary">{{event.prix}}$</span>
+                </div>
+                <button type="button" class="btn btn-primary mt-4 btn-subscribe" data-toggle="modal" data-target="#exampleModal" (click)=' modificationEvenement(event.id)'>Modifier</button>
+                <button type="button"  class="btn btn-danger mt-4 btn-subscribe"  (click)=' suppressionEvent(event.id)'>Supprimer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+<form (ngSubmit)="onSubmit(myform)" #myform="ngForm">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modification evnement</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body"  >
+            <div class="form-group">
+                <input type="hidden"  [value]="eventVariable.id" name="id">
+              <label for="exampleInputDescription1">Description</label>
+              <input type="text" class="form-control" id="exampleInputDescription1"  [(ngModel)]="eventVariable.description" name="description" aria-describedby="descriptionHelp" placeholder="entrez description">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputLabelle1">Labelle</label>
+              <input type="text" class="form-control" id="exampleInputLabelle1"  [(ngModel)]="eventVariable.labelle" name="labelle" placeholder="entrez Labelle">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPrix1">Prix</label>
+              <input type="number" class="form-control" id="exampleInputPrix1"  [(ngModel)]="eventVariable.prix" name="prix" placeholder="entrez Prix">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputType1">Type</label>
+              <input type="text" class="form-control" id="exampleInputType1"  [(ngModel)]="eventVariable.type" name="type"placeholder="entrez le type d'evenement">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputImage1">Image</label>
+              <input type="text" class="form-control" id="exampleInputImage1"  [(ngModel)]="eventVariable.image" name="image" placeholder="entrez l'image">
+            </div>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-primary" >Enregistrer</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+
+  <!-- Modal -->
+<form (ngSubmit)="onAddEvent()" >
+  <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajout evenement</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body"  >
+            <div class="form-group">
+                <label for="exampleInputLabelle1">Labelle</label>
+                <input type="text" class="form-control" id="exampleInputLabelle1"  [(ngModel)]="eventVariable1.labelle" name="labelle" placeholder="entrez labelle">
+              </div>
+            <div class="form-group">
+              <label for="exampleInputDescription1">Description</label>
+              <input type="text" class="form-control" id="exampleInputDescription1"  [(ngModel)]="eventVariable1.description" name="description" aria-describedby="descriptionHelp" placeholder="entrez description">
+            </div>
+           <div class="form-group">
+              <label for="exampleInputPrix1">Prix</label>
+              <input type="number" class="form-control" id="exampleInputPrix1"  [(ngModel)]="eventVariable1.prix" name="prix" placeholder="entrez prix">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputType1">Type</label>
+              <input type="text" class="form-control" id="exampleInputType1"  [(ngModel)]="eventVariable1.type" name="type"placeholder="entrez type">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputImage1">Image</label>
+              <input type="text" class="form-control" id="exampleInputImage1"  [(ngModel)]="eventVariable1.image" name="image" placeholder="entrez image">
+            </div>
+           
+           
+           
+         <!--   <button type="submit" class="btn btn-primary">modifier</button> -->
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-primary"  >Enregistrer</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+

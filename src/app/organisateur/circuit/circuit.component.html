@@ -1,0 +1,117 @@
+
+<section class="section section-lg pt-lg-0">
+    <div class="float-right">
+        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal1" >Ajout</button>
+        </div>
+   <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="row row-grid">
+          <div class="col-lg-4 events-block" *ngFor="let circuit of circuits | async">
+            <div class="card card-lift--hover shadow border-0">
+                <div class="banner-event">
+                    <img src="http://localhost:4200/assets/img/theme/2.jpg" class="img-events">
+                </div>
+              <div class="card-body py-5">
+                  <p class="description mt-3">{{circuit.type}}</p>
+                <h6 class="text-primary text-uppercase">{{circuit.description}}</h6>
+               
+                <button type="button" class="btn btn-primary mt-4 btn-subscribe" data-toggle="modal" data-target="#exampleModal" (click)=' modificationCircuit(circuit.id)'>Modifier</button>
+                <button type="button"  class="btn btn-danger mt-4 btn-subscribe"  (click)=' suppressionCircuit(circuit.id)'>Supprimer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+<form (ngSubmit)="onSubmit(myform)" #myform="ngForm">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modification circuit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body"  >
+            <div class="form-group">
+                <input type="hidden"  [value]="circuitVariable.id" name="id">
+              <label for="exampleInputDescription1">Description</label>
+              <input type="text" class="form-control" id="exampleInputDescription1"  [(ngModel)]="circuitVariable.description" name="description" aria-describedby="descriptionHelp" placeholder="entrez description">
+            </div>
+             <div class="form-group">
+              <label for="exampleInputType1">Type</label>
+              <input type="text" class="form-control" id="exampleInputType1"  [(ngModel)]="circuitVariable.type" name="type"placeholder="entrez le type d'evenement">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputImage1">Image</label>
+              <input type="text" class="form-control" id="exampleInputImage1"  [(ngModel)]="circuitVariable.image" name="image" placeholder="entrez l'image">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputevenement1">Evenement</label>
+                <input type="text" class="form-control" id="exampleInputevenement1"  [(ngModel)]="circuitVariable.evenement" name="evenement_id" placeholder="entrez l'evenement">
+              </div>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-primary"  >Enregistrer</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+
+  <!-- Modal -->
+<form (ngSubmit)="onAddCircuit()" >
+  <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajout circuit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body"  >
+            
+            <div class="form-group">
+              <label for="exampleInputDescription1">Description</label>
+              <input type="text" class="form-control" id="exampleInputDescription1"  [(ngModel)]="circuitVariable1.description" name="description" aria-describedby="descriptionHelp" placeholder="entrez description">
+            </div>
+           <div class="form-group">
+              <label for="exampleInputType1">Type</label>
+              <input type="text" class="form-control" id="exampleInputType1"  [(ngModel)]="circuitVariable1.type" name="type"placeholder="entrez type">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputImage1">Image</label>
+              <input type="text" class="form-control" id="exampleInputImage1"  [(ngModel)]="circuitVariable1.image" name="image" placeholder="entrez image">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEvenement1">Evenement</label>
+                <input type="number" class="form-control" id="exampleInputEvenement1"  [(ngModel)]="circuitVariable1.evenement" name="evenement_id" placeholder="entrez evenement">
+              </div>
+           
+           
+         <!--   <button type="submit" class="btn btn-primary">modifier</button> -->
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-primary"  >Enregistrer</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+

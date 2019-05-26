@@ -1,0 +1,130 @@
+<main>
+ <section class="section section-shaped section-lg">
+    <div class="container pt-lg-md">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-header bg-white pb-5">
+              <div class="text-muted text-center mb-3">
+                <small>Sign up with</small>
+              </div>
+              <div class="text-center">
+                <a href="javascript:void(0)" class="btn btn-neutral btn-icon mr-4">
+                  <span class="btn-inner--icon">
+                    <img src="./assets/img/icons/common/github.svg">
+                  </span>
+                  <span class="btn-inner--text">Github</span>
+                </a>
+                <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--icon">
+                    <img src="./assets/img/icons/common/google.svg">
+                  </span>
+                  <span class="btn-inner--text">Google</span>
+                </a>
+              </div>
+            </div>
+            <div class="card-body px-lg-5 py-lg-5">
+              <div class="text-center text-muted mb-4">
+                <small>Or sign up with credentials</small>
+              </div>
+              <form role="form" (ngSubmit)="onAddUser()">
+                <div class="form-group" [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative mb-3">
+                    
+                    <input class="form-control" placeholder="Nom" type="text" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="user.name" name="nom">
+                  </div>
+                </div>
+               
+                  <div class="form-group" [ngClass]="{'focused':focus===true}">
+                    <div class="input-group input-group-alternative mb-3">
+                      
+                      <input class="form-control" placeholder="Prenom" type="text" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="user.lastname" name="lastname">
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'focused':focus===true}">
+                    <div class="input-group input-group-alternative mb-3">
+                      
+                      <input class="form-control" placeholder="Pseudo" type="text" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="user.username" name="username">
+                    </div>
+                    <div class="input-group input-group-alternative mb-3">
+                      
+                      <input class="form-control" placeholder="Password" type="text" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="user.password" name="password">
+                    </div>
+                    <div class="input-group input-group-alternative mb-3">
+                      
+                      <input class="form-control" placeholder="Email" type="text" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="user.email" name="email">
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'focused':focus===true}">
+                    <div class="input-group input-group-alternative mb-3">
+                     
+                      <input class="form-control" placeholder="Date naissance" type="datenaissance" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="user.birthDay" name="birthDay">
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'focused':focus===true}">
+                      <div class="input-group input-group-alternative mb-3">
+                       
+                        <input class="form-control" placeholder="num Tel" type="text" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="user.number" name="number">
+                      </div>
+                    </div>
+                  <div class="form-group" [ngClass]="{'focused':focus===true}">
+                    <div class="input-group input-group-alternative mb-3">
+                     
+                      <input class="form-control" placeholder="Image" type="text" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="user.image" name="image">
+                    </div>
+                  </div>
+                
+                
+                <div class="text-muted font-italic">
+                  <small>password strength:
+                    <span class="text-success font-weight-700">strong</span>
+                  </small>
+                </div>
+                <div class="row my-4">
+                  <div class="col-12">
+                    <div class="custom-control custom-control-alternative custom-checkbox">
+                      <input class="custom-control-input" id="customCheckRegister" type="checkbox">
+                      <label class="custom-control-label" for="customCheckRegister">
+                        <span>I agree with the
+                          <a href="javascript:void(0)">Privacy Policy</a>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary mt-4" >Create account</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="col-md-4" >
+      
+      <ng-template #classic2 let-c="close" let-d="dismiss" >
+        <div class="modal-content bg-gradient-danger">
+          <div class="modal-header">
+            <h6 class="modal-title" id="modal-title-notification">Message d'information</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="py-3 text-center">
+              <i class="ni ni-bell-55 ni-3x"></i>
+              <h4 class="heading mt-4">Information</h4>
+              <p>{{message}}</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal" (click)="c('Close click')">Close</button>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+</main>

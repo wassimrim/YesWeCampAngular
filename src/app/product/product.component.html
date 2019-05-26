@@ -1,0 +1,131 @@
+
+<section class="section section-lg pt-lg-0">
+    <div class="float-right">
+        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal1" >Ajout</button>
+        </div>
+   <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="row row-grid">
+          <div class="col-lg-4 events-block" *ngFor="let product of products | async">
+            <div class="card card-lift--hover shadow border-0">
+                <div class="banner-event">
+                    <img src="http://localhost:4200/assets/img/theme/materiel.jpg" class="img-events">
+                </div>
+              <div class="card-body py-5">
+                <h6 class="text-primary text-uppercase">{{product.labelle}}</h6>
+                <p class="description mt-3">{{product.description}}</p>
+                <div>
+                  <span class="badge badge-pill badge-primary">{{product.prix}}$</span>
+                </div>
+                <div>
+                <span class="badge badge-pill badge-primary">{{product.quantite}} Article désponible</span>
+              </div>
+                <button type="button" class="btn btn-primary mt-4 btn-subscribe" data-toggle="modal" data-target="#exampleModal" (click)=' modificationProduct(product.id)'>Modifier</button>
+                <button type="button"  class="btn btn-danger mt-4 btn-subscribe"  (click)=' suppressionProduct(product.id)'>Supprimer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+<form (ngSubmit)="onSubmit(myform)" #myform="ngForm">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modification Article</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body"  >
+            <div class="form-group">
+              <label for="exampleInputLabelle1">Labelle</label>
+              <input type="text" class="form-control" id="exampleInputLabelle1"  [(ngModel)]="productVariable.labelle" name="labelle" placeholder="entrez Labelle">
+            </div>
+            <div class="form-group">
+                <input type="hidden"  [value]="productVariable.id" name="id">
+              <label for="exampleInputDescription1">Description</label>
+              <input type="text" class="form-control" id="exampleInputDescription1"  [(ngModel)]="productVariable.description" name="description" aria-describedby="descriptionHelp" placeholder="entrez description">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPrix1">Prix</label>
+              <input type="number" class="form-control" id="exampleInputPrix1"  [(ngModel)]="productVariable.prix" name="prix" placeholder="entrez Prix">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputQuantite1">Quantité</label>
+              <input type="text" class="form-control" id="exampleInputQuantite1"  [(ngModel)]="productVariable.quantite" name="type"placeholder="entrez le type d'evenement">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputImage1">Image</label>
+              <input type="text" class="form-control" id="exampleInputImage1"  [(ngModel)]="productVariable.image" name="image" placeholder="entrez l'image">
+            </div>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-primary"  >Enregistrer</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+
+  <!-- Modal -->
+<form (ngSubmit)="onAddProduct()" >
+  <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajout Article</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body"  >
+            <div class="form-group">
+                <label for="exampleInputLabelle1">Labelle</label>
+                <input type="text" class="form-control" id="exampleInputLabelle1"  [(ngModel)]="productVariable1.labelle" name="labelle" placeholder="entrez labelle">
+              </div>
+            <div class="form-group">
+              <label for="exampleInputDescription1">Description</label>
+              <input type="text" class="form-control" id="exampleInputDescription1"  [(ngModel)]="productVariable1.description" name="description" aria-describedby="descriptionHelp" placeholder="entrez description">
+            </div>
+           <div class="form-group">
+              <label for="exampleInputPrix1">Prix</label>
+              <input type="number" class="form-control" id="exampleInputPrix1"  [(ngModel)]="productVariable1.prix" name="prix" placeholder="entrez prix">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputQuantite1">Quantité</label>
+              <input type="text" class="form-control" id="exampleInputQuantite1"  [(ngModel)]="productVariable1.quantite" name="type"placeholder="entrez le type d'evenement">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputImage1">Image</label>
+              <input type="text" class="form-control" id="exampleInputImage1"  [(ngModel)]="productVariable1.image" name="image" placeholder="entrez image">
+            </div>
+           
+           
+           
+         <!--   <button type="submit" class="btn btn-primary">modifier</button> -->
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-primary" >Enregistrer</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+
+

@@ -1,0 +1,50 @@
+<nav  *ngIf="getRole()==='ROLE_ADMIN' || getRole()==='ROLE_USER' || getRole()==='ROLE_ORGANISATEUR' || getRole()==='ROLE_VENDEUR'" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
+  <div class="container">
+    <a class="navbar-brand mr-lg-5" [routerLink]="['/home']">
+      <img src="./assets/img/brand/argon-white.png">
+    </a>
+    <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
+      <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+        <li class="nav-item" >
+            <a [routerLink]="['/landing']" class="dropdown-item">Home</a>
+        </li>
+        <li class="nav-item " *ngIf="getRole()==='ROLE_USER'">
+            <a [routerLink]="['user/events']" class="dropdown-item">Events</a>
+        </li>
+        <li class="nav-item " *ngIf="getRole()==='ROLE_USER'">
+            <a  class="dropdown-item"  [routerLink]="['user/articles']">Product</a>
+        </li>
+         <li class="nav-item " *ngIf="getRole()==='ROLE_ADMIN'">
+           <a  class="dropdown-item"[routerLink]="['admin/users']">ALL USERS</a>
+         </li>
+         <li class="nav-item " *ngIf="getRole()==='ROLE_ADMIN'">
+           <a  class="dropdown-item" [routerLink]="['admin/events']">ALL EVENTS</a>
+         </li>
+         <li class="nav-item " *ngIf="getRole()==='ROLE_ADMIN'">
+           <a  class="dropdown-item" [routerLink]="['admin/products']" >ALL PRODUCTS</a>
+         </li>
+         <li class="nav-item " *ngIf="getRole()==='ROLE_ORGANISATEUR'">
+           <a  class="dropdown-item" [routerLink]="['/organisateur/event']">EVENTS</a>
+         </li>
+         <li class="nav-item " *ngIf="getRole()==='ROLE_ORGANISATEUR'">
+          <a  class="dropdown-item" [routerLink]="['/organisateur/circuit']">CIRCUIT</a>
+        </li>
+        <li class="nav-item " *ngIf="getRole()==='ROLE_ORGANISATEUR'">
+          <a  class="dropdown-item" [routerLink]="['/organisateur/categorie']">CATEGORIE</a>
+        </li>
+        <li class="nav-item " *ngIf="getRole()==='ROLE_ORGANISATEUR'">
+          <a  class="dropdown-item" [routerLink]="['/organisateur/hebergement']">HEBERGEMENT</a>
+        </li>
+         <li class="nav-item " *ngIf="getRole()==='ROLE_VENDEUR'">
+           <a  class="dropdown-item" [routerLink]="['vendeur/product']">PRODUCTS</a>
+         </li>
+         <li class="nav-item ">
+           <a [routerLink]="['/user-profile']" class="dropdown-item">Profile</a>
+         </li>
+         <li class="nav-item ">
+           <a (click)="logout()" class="dropdown-item">Logout</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>

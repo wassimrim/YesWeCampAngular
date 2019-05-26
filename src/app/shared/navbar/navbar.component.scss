@@ -1,0 +1,16 @@
+.dropdown-item{
+    &:hover{
+        color: #000;
+    }
+    color:#5e72e4;
+}
+#navbar-main {
+    background: #5e72e4;
+    /*&.headroom--unpinned {
+        position: fixed;
+        top: 60px;
+    }
+    &.headroom--not-top{
+        top: 48px !important;  
+    }*/
+}
